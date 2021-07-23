@@ -1,0 +1,9 @@
+127.0.0.1 - - [21/Apr/2020:09:46:59 +0300] "GET / HTTP/1.1" 404 1074
+127.0.0.1 - - [21/Apr/2020:09:47:09 +0300] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [21/Apr/2020:09:47:10 +0300] "GET /Content/backend/NewFile1.jsp HTTP/1.1" 200 1598
+0:0:0:0:0:0:0:1 - - [21/Apr/2020:09:47:10 +0300] "GET /Content/backend/vid/file1.mp3 HTTP/1.1" 206 961098
+0:0:0:0:0:0:0:1 - - [21/Apr/2020:09:47:23 +0300] "GET /Content/backend/NewFile1.jsp HTTP/1.1" 200 1598
+0:0:0:0:0:0:0:1 - - [21/Apr/2020:09:47:24 +0300] "GET /favicon.ico HTTP/1.1" 404 1085
+0:0:0:0:0:0:0:1 - - [21/Apr/2020:09:47:24 +0300] "GET /Content/backend/vid/file1.mp3 HTTP/1.1" 206 961098
+0:0:0:0:0:0:0:1 - - [21/Apr/2020:09:48:30 +0300] "GET /Content/backend/NewFile1.jsp HTTP/1.1" 200 1626
+0:0:0:0:0:0:0:1 - - [21/Apr/2020:09:48:31 +0300] "GET /Content/backend/vid/file1.mp3 HTTP/1.1" 206 961098

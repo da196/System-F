@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+D:\TCRA 2019-2020\Project\DICTAS-Project\TCMS\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2565908333.index
+1780046518.index
+220617251.index
+3496322587.index
+3418353579.index
+1976612533.index

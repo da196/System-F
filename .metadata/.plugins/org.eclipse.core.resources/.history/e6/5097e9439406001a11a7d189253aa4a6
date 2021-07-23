@@ -1,0 +1,243 @@
+
+<%@ page import="tcms.presentation.*" %>
+<!-- Start header -->
+<jsp:include page="includes/header.jsp" />
+<!-- End header -->
+
+<!-- Start Top header View -->
+<jsp:include page="includes/topView.jsp" />
+<!-- End Top Header View -->
+
+<!-- Start SideBar View -->
+<jsp:include page="includes/sideView.jsp" />
+<!-- End SideBar View -->
+
+      <main class="main">
+        <!-- Breadcrumb-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">Home</li>
+          <li class="breadcrumb-item">
+            Content
+          </li>
+          <li class="breadcrumb-item">
+          <a href="channel-tv.jsp">TV</a>
+          </li>
+          <!-- Breadcrumb Menu-->
+          <li class="breadcrumb-menu d-md-down-none">
+            <div class="btn-group" role="group" aria-label="Button group">
+              <a class="btn" href="#">
+                <i class="icon-speech"></i>
+              </a>
+              <a class="btn" href="./">
+                <i class="icon-graph"></i>  Dashboard</a>
+              <a class="btn" href="#">
+                <i class="icon-settings"></i>  Settings</a>
+            </div>
+          </li>
+        </ol>
+        <div class="container-fluid">
+          <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-sm-4 col-lg-2">
+                    <div class="card">
+                        <div class="card-header">
+                        </i> Channels
+                        </div>
+                        <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">AZAM TV</li>
+                            <li class="list-group-item active">ITV</li>
+                            <li class="list-group-item">TBC 1</li>
+                            <li class="list-group-item">TBC 2</li>
+                            <li class="list-group-item">WASAFI TV</li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-lg-10 mb-3">
+                    <div class="row">
+                        <!-- /.col-->
+                        <div class="col-sm-12 col-lg-6 mb-3">
+                          <div id="media-player">
+                            <video id="classic-video" class="media-video" width="450" controls>
+                            <% java.util.List<Content> contentList = Content.GetContent(); 	
+                            for(int i=0; i<contentList.size(); i++) { 
+                            	System.out.println(contentList.get(i).getFile_path_file_name());
+                            %>
+                                <source src="<%out.print(contentList.get(i).getFile_path_file_name()); %>" type="video/mp4">
+                                <% } %>
+                                    Your browser does not support the video element.
+                            </video>
+                            <div id="media-controls">
+                              <button id="play-pause-button" class="play" title="PLAY" onclick="togglePlayPause();">Play
+                              </button>
+                              <button id="stop-button" class="stop" title="STOP" onclick="stopPlayer();">Stop
+                              </button>
+                              <button id="volume-inc-button" class="volume-plus" title="INCREASE VOLUME" onclick='changeVolume("+");'>Increase volume
+                              </button>
+                              <button id="volume-dec-button" class="volume-minus" title="DECREASE VOLUME" onclick='changeVolume("-");'>Decrease volume
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /.col-->
+                        <div class="col-sm-12 col-lg-6">
+                            <video id="classic-video" class="media-video" width="450" controls>
+                                <source src="vid/vid1.mp4" type="video/mp4">
+                                    Your browser does not support the video element.
+                            </video>
+
+                            <div id="media-controls">
+                              <button id="play-pause-button" class="play" title="play" onclick="togglePlayPause();">
+                                Play
+                              </button>
+                              <button id="stop-button" class="stop" title="stop" onclick="stopPlayer();">
+                              Stop
+                              </button>
+                              <button id="volume-inc-button" class="volume-plus" title="increase volume" onclick='changeVolume("+");'>
+                              Increase volume
+                              </button>
+                              <button id="volume-dec-button" class="volume-minus" title="decrease volume" onclick='changeVolume("-");'>
+                              Decrease volume
+                              </button>
+                            </div>
+                        </div>
+                        <!-- /.col-->
+                        <div class="col-sm-12 col-lg-6">
+                            <video id="classic-video" class="media-video" width="450" controls>
+                            
+                                <source src="vid/vid1.mp4" type="video/mp4">
+                                    Your browser does not support the video element.
+                            </video>
+
+                            <div id="media-controls">
+                              <button id="play-pause-button" class="play" title="play" onclick="togglePlayPause();">
+                                Play
+                              </button>
+                              <button id="stop-button" class="stop" title="stop" onclick="stopPlayer();">
+                              Stop
+                              </button>
+                              <button id="volume-inc-button" class="volume-plus" title="increase volume" onclick='changeVolume("+");'>
+                              Increase volume
+                              </button>
+                              <button id="volume-dec-button" class="volume-minus" title="decrease volume" onclick='changeVolume("-");'>
+                              Decrease volume
+                              </button>
+                            </div>
+                        </div>
+                        <!-- /.col-->
+                        <div class="col-sm-12 col-lg-6">
+                          <div id="media-player">
+                            <video id="classic-video" class="media-video" width="450" controls>
+                                <source src="vid/vid1.mp4" type="video/mp4">
+                                    Your browser does not support the video element.
+                            </video>
+
+                            <div id="media-controls">
+                              <button id="play-pause-button" class="play" title="play" onclick="togglePlayPause();">
+                                Play
+                              </button>
+                              <button id="stop-button" class="stop" title="stop" onclick="stopPlayer();">
+                              Stop
+                              </button>
+                              <button id="volume-inc-button" class="volume-plus" title="increase volume" onclick="changeVolume(+);">
+                              Increase volume
+                              </button>
+                              <button id="volume-dec-button" class="volume-minus" title="decrease volume" onclick="changeVolume(-);">
+                              Decrease volume
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /.col-->
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <script type="text/javascript">
+        //$(document).ready(function(){
+          document.addEventListener("DOMContentLoaded", function() {
+            initialiseMediaPlayer(); }, 
+          false);
+
+          var mediaPlayer;
+
+          //var 
+
+          //const btnPlay = document.querySelector('#play-pause-button');
+
+          const videoElement = document.querySelector('.media-video');
+
+          // const incVolume = document.querySelector('.volume-plus');
+
+          // const decVolume = document.querySelector('.volume-minus');
+          
+          function initialiseMediaPlayer() {
+            mediaPlayer = document.getElementsByClassName('media-video');
+
+            console.log(mediaPlayer);
+            for(var i = 0; i < mediaPlayer.length; i++)
+              mediaPlayer[i].controls = false;
+          }
+          
+          function togglePlayPause(){
+            var btn = document.getElementById('play-pause-button');
+            if(videoElement.paused || videoElement.ended){
+              btn.title = 'PAUSE';
+              btn.innerHTML = 'Pause';
+              btn.className = 'Pause';
+              console.log("Play");
+              mediaPlayer[0].play();
+            }else{
+              btn.title = 'PLAY';
+              btn.innerHTML = 'Play';
+              btn.className = 'Play';
+              console.log("Pause");
+              mediaPlayer[0].pause();
+            }
+            //console.log(mediaPlayer);
+          }
+
+          function stopPlayer(){
+            mediaPlayer[0].pause()
+            mediaPlayer[0].currentTime = 0;
+          }
+
+          
+          function changeVolume(direction){
+            
+            if(direction == '+')
+              mediaPlayer[0].volume += mediaPlayer[0].volume == 1 ? 0 : 0.1;
+            else mediaPlayer[0].volume -= (mediaPlayer[0].volume == 0 ? 0: 0.1);
+
+            mediaPlayer[0].volume = parseFloat(mediaPlayer[0].volume).toFixed(1);
+            
+          }
+      </script>
+      
+    </div>
+    
+<!-- Start Footer View -->
+<jsp:include page="includes/footer.jsp" />
+<!-- End Footer View -->
+
+<!-- CODE TO LOAD ON SPECIFIC PART NOT WHOLE PAGE....
+<script type="text/javascript">
+	
+	 $(document).ready(function(){
+			$("#typo").click(function(){
+			
+			alert('HELLO');
+			$('.main').load('typography.html')
+			
+			});
+	 });
+	 	 
+</script>
+-->	
+	
+  </body>
+</html>

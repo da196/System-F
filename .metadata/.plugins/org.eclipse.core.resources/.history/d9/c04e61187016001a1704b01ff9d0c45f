@@ -1,0 +1,324 @@
+<%@ page import="tcms.configuration.*" %>
+<%@ page import="tcms.presentation.*" %>
+<%@ page import="tcms.errorLogs.*" %>
+<%@ page import="java.util.*" %>
+<%@ page import="java.io.*" %>
+
+<!-- Start header -->
+<jsp:include page="includes/header.jsp" />
+<!-- End header -->
+
+<!-- Start Top header View -->
+<jsp:include page="includes/topView.jsp" />
+<!-- End Top Header View -->
+
+<!-- Start SideBar View -->
+<jsp:include page="includes/sideView.jsp" />
+
+<style>
+#overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 2;
+    cursor: pointer;
+    background: url('img/loading1.gif') 50% 50% no-repeat rgb(0,0,0,0.5);
+}
+</style>
+<!-- End SideBar View -->
+<script type="text/javascript">
+
+
+<!--  Start Searching Content//-->
+function getContent(){
+	var file_date = document.getElementById("inputDate").value; 
+	var start_time = document.getElementById("startTime").value; 
+	var end_time = document.getElementById("endTime").value; 
+	var channel_id = document.getElementById("channel").value; 
+	var search = document.getElementById("search").value;
+	
+	document.getElementById("overlay").style.display = "block";
+	
+	 $.ajax({
+	     type: "post",
+	      url: "actions/components/search_content.jsp", //this is my servlet
+	       data: {
+	    	   file_date: file_date,
+	    	   start_time:start_time,
+	    	   end_time:end_time,
+	    	   channel_id: channel_id,
+	    	   search: search
+	           }, 
+	          success: function(msg){  
+	        	  
+	        	document.getElementById("overlay").style.display = "none";
+	        	document.getElementById("filename").value = "Test";
+	        	  alert(msg.trim());
+	        	  $("#search_player").show();
+	        	  $("#classic-video").attr("src",msg.trim());
+	        	
+	          }
+	     });
+}
+function trimAudioVideo(){
+	var filename = document.getElementById("filename").value;
+	var cut_from = document.getElementById("start-cut").value;
+	var duration = document.getElementById("duration").value;
+	var title = document.getElementById("title").value;
+	var description = document.getElementById("description").value;
+	var trim = document.getElementById("trim").value;
+	var channel_id = document.getElementById("channel").value; 
+	 $.ajax({
+	     type: "post",
+	      url: "actions/components/search_content.jsp", //this is my servlet
+	       data: {
+	    	   filename: filename,
+	    	   cut_from: cut_from,
+	    	   duration: duration,
+	    	   title: title,
+	    	   description: description,
+	    	   trim: trim,
+	    	   channel_id: channel_id
+	           }, 
+	          success: function(msg){  
+	        	  
+	        	document.getElementById("overlay").style.display = "none";
+	        	document.getElementById("filename").value = "Test";
+	        	  alert(msg.trim());
+	        	  $("#search_player").show();
+	        	  $("#classic-video").attr("src",msg.trim());
+	        	
+	          }
+	     });
+}
+</script>
+<div id="overlay"></div>
+<input type="hidden" id="filename" />
+<input type="hidden" id="search" value="1" />
+<input type="hidden" id="trim" value="2" />
+      <main class="main">
+         <!-- Breadcrumb-->
+         <ol class="breadcrumb">
+          <li class="breadcrumb-item">Home</li>
+          <li class="breadcrumb-item">
+            Components
+          </li>   
+          <li class="breadcrumb-item">
+            <a href="search.jsp">Search</a>
+          </li>   
+        </ol>        
+        <!-- Breadcrumb-->
+        <div class="container-fluid">
+          <div class="animated fadeIn">
+            <div class="row">
+              <div class="col-sm-12 col-xl-12">
+                <div class="card">
+                  <div class="card-header">
+                    <i class="fa fa-align-justify"></i> Search for the Content Playback             
+                  </div>
+
+                  <div class="card-body">                  
+
+                     <!-- Start Search for the content --> 
+                                        
+               <!--     <form class="form-horizontal"  action="" method="post">	-->
+	      			  <div class="form-group row">
+	      			  
+
+			      			  
+			      			   <div class="form-group col-sm-10">
+			      			   
+				      			   <div class="form-group row">
+				      			   
+				      			        <div class="form-group col-sm-3">
+				      			        <label for="source"><strong>Content Type</strong></label>
+						                <select class="form-control" id="contentType" name="contentType" >
+							 			<option value="">-- Channel Type -- </option>
+						 	 			<%
+						 	 			File errorLogs = null;
+						                String errorLogFile = Utility.getPath();
+						                errorLogs = new File(errorLogFile);
+										try{
+													                    
+										java.util.List<Lookup> contentList = Lookup.GetContentTypeList();
+													
+										for (int i = 0; i < contentList.size(); i++){
+											
+										%>
+										<option value="<% out.print(contentList.get(i).getId());%>"> <% out.print(contentList.get(i).getName()); %> </option>								      
+										 <%
+										}
+										}catch(Exception er){
+											er.printStackTrace();
+										ErrorLogsAppender.appendException("Search.jsp page", er, errorLogs);
+										}
+						 	 			%>
+							 			</select>
+			      			            </div>
+			      			            
+			      			            <div class="form-group col-sm-3">
+			      			  			<label for="source"><strong>Date</strong></label>
+			      			  			<input class="form-control" id="inputDate" type="date" name="inputDate">  
+			      			            </div>
+			      			            
+			      			            <div class="form-group col-sm-3">
+			      			            <label for="source"><strong>Start Time</strong></label>
+			      			  			<input class="form-control" id="startTime" type="time" name="startTime"> 
+			      			            </div>
+			      			            
+			      			            <div class="form-group col-sm-3">
+			      			  			<label for="source"><strong>End Time</strong></label>
+			      			  			<input class="form-control" id="endTime" type="time" name="endTime" placeholder="11:20 AM">
+			      			            </div>
+				      			   
+				      			   </div>
+				      			   
+				      			   
+				      			   <div class="form-group row">
+				      			   
+				      			        <div id="channel_id" class="form-group col-sm-3">
+				      			            <label for="channel"><strong>Channel Name</strong></label>
+					                        <select class="form-control" name="channel" id="channel" >
+					                        <option value="">-- Channel Name -- </option>
+					                       
+					                        </select>			      			  
+			      			            </div>
+			      			            
+			      			            <div class="form-group col-sm-7">
+				      			            <label for="source"><strong>Description</strong></label>
+				      			            <input class="form-control" id="description" type="text" name="description" placeholder="Program">
+				      			            			      			            
+			      			            </div>
+			      			            
+			      			           
+			      			            <div class="form-group col-sm-2">
+			      			         
+				      			            <button class="btn btn-sm btn-primary" type="submit" onClick="getContent();">
+                      						<i class="fa fa-dot-circle-o"></i> Search </button>
+			      			            </div>
+			      			            		      			            
+			      			  
+			      			            </div>
+				      			   
+				      			   </div>
+			      			  			      			   
+			      			   </div>
+	      			  
+	      			  
+                  <!--   </form> -->
+                   
+
+                    <!-- End Search for the content --> 
+
+
+                    <!-- Start DIV for video/audio player --> 
+                        
+                    <div id='search_player'>
+                    	<div class="row">
+	               <!--          <div id ="test" class="col-sm-12 col-lg-6 mb-2">
+	                            <video id="classic-video" class="media-video" controls>
+	                            
+	                                <source src="" type="video/mp4">
+	                                    Your browser does not support the video element.
+	                            </video>
+	                          </div>
+	                --> 
+	                                 <div class="col-sm-12 col-lg-6 mb-2"> 
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <video id="classic-video" class="media-video" controls> 
+                                                <source src="" type="video/mp4">
+                                                </video>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+	                          <div class="col-sm-12 col-lg-6 mb-2">
+	                          	<form>
+	                          		<div class="form-group row">                 
+	                                  <label class="col-3 col-form-label" for="start-cut"><strong>Cut from</strong></label>
+	                                  <input class="form-control col-3" id="start-cut" type="time" name="start-cut"step="30">
+	                                </div>
+	
+	                                <div class="form-group row">                 
+	                                  <label class="col-3 col-form-label" for="duration"><strong>Duration</strong></label>
+	                                  <input class="form-control col-3" id="duration" type="time" name="duration"step="30">
+	                                </div>
+	
+	                                <div class="form-group row">                 
+	                                  <label class="col-3 col-form-label" for="title"><strong>Title</strong></label>
+	                                  <input class="form-control col-3" id="title" type="text" name="title">
+	                                </div>
+	                                  	
+	                                <div class="form-group row">                 
+	                                  <label class="col-3 col-form-label" for="description"><strong>Description</strong></label>
+	                                  <input class="form-control col-3" id="description" type="text" name="description">
+	                                </div>
+	
+	                                <div class="form-group row justify-content-center">
+	                                  <button type="submit" class="btn btn-primary justify-content-center" onClick="trimAudioVideo();">Trim</button>
+	                                </div>
+	                          	</form>
+	                          </div>
+                    	</div>
+                    </div>
+
+
+                    <!-- End DIV for video/audio player --> 
+
+
+                </div>
+                
+              </div>
+             
+            </div>
+          </div>
+        </div>
+        </div>
+      </main>
+<!-- Start AsideMenu View -->
+<jsp:include page="includes/asideMenuView.jsp" />
+<!-- End AsideMenu View --> 
+    </div>
+    
+
+<!-- Start Top header View -->
+<jsp:include page="includes/footer.jsp" />
+<!-- End Top Header View -->
+
+  </body>
+</html>
+
+<script type="text/javascript">
+$(document).ready(function (){
+	$("#contentType").on("change", function (){
+		var content_type_id = $("#contentType").val(); // get content id in a selected box 
+		
+		$.ajax({
+			url: "channel.jsp", // yuor jsp page name
+			data:{
+				content_type_id: content_type_id
+			},
+			method: "POST",
+			success: function (data)
+			{
+				
+				$("#channel_id").html(data);
+			}
+		})
+	});
+	
+});
+
+$(document).ready(function() {
+    $("#search_player").hide();
+});
+
+</script>

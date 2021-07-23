@@ -1,0 +1,12 @@
+Roles class - addRoles() : org.postgresql.util.PSQLException: ERROR: null value in column "id" violates not-null constraint
+  Detail: Failing row contains (null, Content User, Main user of the Content System). Thu Nov 14 17:23:11 EAT 2019
+Roles class - addRoles() : org.postgresql.util.PSQLException: ERROR: null value in column "id" violates not-null constraint
+  Detail: Failing row contains (null, Content User, Main user of the Content System). Thu Nov 14 17:26:30 EAT 2019
+Roles class - addRoles() : org.postgresql.util.PSQLException: ERROR: null value in column "id" violates not-null constraint
+  Detail: Failing row contains (null, Content User, Main user of the Content System). Thu Nov 14 17:30:39 EAT 2019
+Roles class - updateRole() : org.postgresql.util.PSQLException: ERROR: relation "otas.tblcompanyinfo" does not exist
+  Position: 8 Tue Nov 19 13:03:47 EAT 2019
+Roles class - updateRole() : org.postgresql.util.PSQLException: ERROR: relation "otas.tblcompanyinfo" does not exist
+  Position: 8 Tue Nov 19 13:05:09 EAT 2019
+Roles class - updateRole() : org.postgresql.util.PSQLException: ERROR: relation "otas.tblcompanyinfo" does not exist
+  Position: 8 Tue Nov 19 13:06:16 EAT 2019

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<!--     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css"> -->
+    <link rel="stylesheet" href="dist/css/formValidation.min.css">
+</head>
+<body>
+    <form id="demoForm" method="post">
+        <div class="cf mb2">
+            <div class="fl w-100">
+                <div class="fl w-25 pa2">Full name</div>
+                <div class="fl w-75">
+                    <div class="fl w-100">
+                        <div class="fl w-50">
+                            <input type="text" name="firstName" class="" />
+                        </div>
+                        <div class="fl w-50">
+                            <input type="text" name="lastName" class="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cf mb2">
+            <div class="fl w-100">
+                <div class="fl w-25 pa2">Username</div>
+                <div class="fl w-50">
+                    <input type="text" name="username" class="" />
+                </div>
+            </div>
+        </div>
+        <div class="cf mb2">
+            <div class="fl w-100">
+                <div class="fl w-25 pa2">Email</div>
+                <div class="fl w-50">
+                    <input type="text" name="email" class="" />
+                </div>
+            </div>
+        </div>
+        <div class="cf mb2">
+            <div class="fl w-100">
+                <div class="fl w-25 pa2">Password</div>
+                <div class="fl w-50">
+                    <input type="password" name="password" class="" />
+                </div>
+            </div>
+        </div>
+        <div class="cf mb2">
+            <div class="fl w-100">
+                <div class="fl w-25 pa2">Gender</div>
+                <div class="fl w-50">
+                    <label for="genderMale" class="lh-copy mr4">
+                        <input class="mr2" type="radio" name="gender" id="genderMale" value="male" /> Male
+                    </label>
+                    <label for="genderFemale" class="lh-copy mr4">
+                        <input class="mr2" type="radio" name="gender" id="genderFemale" value="female" /> Female
+                    </label>
+                    <label for="genderOther" class="lh-copy">
+                        <input class="mr2" type="radio" name="gender" id="genderOther" value="other" /> Other
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="cf mb2">
+            <div class="fl w-100">
+                <div class="fl w-25 pa2"><div id="captchaOperation"></div></div>
+                <div class="fl w-50">
+                    <input type="text" name="captcha" class="" />
+                </div>
+            </div>
+        </div>
+        <div class="cf mb2">
+            <div class="fl w-100">
+                <div class="fl w-25 pa2"></div>
+                <div class="fl w-50">
+                    <label class="lh-copy">
+                        <input class="mr2" type="checkbox" name="agree" value="agree" /> Agree with the terms and conditions
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="cf mb2">
+            <div class="fl w-100">
+                <div class="fl w-25 pa2"></div>
+                <div class="fl w-50">
+                    <button type="submit" class="ba b--black-20 bg-blue white ph3 pv2 br2">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-shim.min.js"></script>     -->
+<!-- <script src="dist/js/formValidation.js"></script> -->
+<script src="dist/js/formValidation.min.js"></script>
+<script src="dist/js/framework/bootstrap.min.js"></script>
+<script src="dist/js/language/en_US.js"></script>
+
+
+<script>
+
+//validate this form
+$('#demoForm').formValidation({
+    framework: 'bootstrap',
+    fields: {
+        'firstName': {
+            verbose: false,
+            threshold: 3,
+            validators: {
+                notEmpty: {
+                    message: 'The user account is required'
+                }
+                               
+            }
+        },
+        'lastName': {
+            validators: {
+                notEmpty: {
+                    message: 'Please select user type.'
+                }
+            }
+        },
+        'username': {
+            validators: {
+                notEmpty: {
+                    message: 'Please select permission.'
+                }
+            }
+        },
+        'password': {
+            validators: {
+                notEmpty: {
+                    message: 'Please select role.'
+                }
+            }
+        },
+        'gender': {
+            validators: {
+                notEmpty: {
+                    message: 'Please select role.'
+                }
+            }
+        }
+    }
+});
+</script>
+
+</body>
+</html>

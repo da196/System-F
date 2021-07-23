@@ -1,0 +1,6 @@
+127.0.0.1 - - [08/Apr/2020:13:13:01 +0300] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [08/Apr/2020:13:13:49 +0300] "GET /Content/ HTTP/1.1" 200 4876
+0:0:0:0:0:0:0:1 - - [08/Apr/2020:13:13:49 +0300] "GET /Content/js/registration-js/jquery-1.12.4.min.js HTTP/1.1" 404 1133
+0:0:0:0:0:0:0:1 - - [08/Apr/2020:13:13:49 +0300] "GET /Content/js/registration-js/jquery-1.12.4.min.js HTTP/1.1" 404 1133
+0:0:0:0:0:0:0:1 - - [08/Apr/2020:13:13:50 +0300] "GET /Content/vendor/fontawesome-free/webfonts/fa-solid-900.woff2 HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [08/Apr/2020:13:13:50 +0300] "GET /Content/vendor/fontawesome-free/webfonts/fa-regular-400.woff2 HTTP/1.1" 304 -

@@ -1,0 +1,45 @@
+.video-card {
+    background: #1c1c1c none repeat scroll 0 0;
+    border-radius: 2px;
+    transition-duration: 0.4s;
+}
+
+.video-card-image {
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.video-card-body {
+    padding: 12px;
+}
+
+.video-title {
+    margin-bottom: 5px;
+}
+
+.video-page {
+    font-size: 11px;
+}
+
+.video-view {
+    color: #acacac;
+    font-size: 10px;
+    font-weight: 500;
+    margin: 2px 0 0;
+}
+
+.play-icon {
+    opacity: 0;
+    position: absolute;
+}
+
+video {
+	width: 100%;
+	height: auto;
+}
+
+audio {
+	width: 100%;
+	/* height: inherit; */
+}
